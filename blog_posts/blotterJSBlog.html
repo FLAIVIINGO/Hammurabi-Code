@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hammurabi's Code</title>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Highlight.js CSS -->
+    <link rel="stylesheet" href="../dracula.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../style.css">
+    <!-- Blotter JS -->
+    <script src="blotter.min.js"></script>
+    <script src="rollingDistortMaterial.js"></script>
+    <script src="slidingDoorMaterial.js"></script>
+    <script src="channelSplitMaterial.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header" class="shadow bg-dark">
+        <nav class="container navbar">
+            <a href="../index.html" class="nav-brand text-light uppercase">Hammurabi's Code</a>
+
+            <!-- Toggle Button -->
+            <button class="toggle-button">
+                <span><i class="fa-brands fa-old-republic"></i></span>
+            </button>
+            <!-- Collapse on Toggle-->
+            <div class="collapse">
+                <ul class="navbar-nav">
+                    <a href="../index.html" class="nav-link">Home</a>
+                    <a href="#" class="nav-link">Contact</a>
+                    <a href="#" class="nav-link">Portfolio</a>
+                </ul>
+            </div>
+            <!--x- Collapse on Toggle -x-->
+            <div class="collapse">
+                <ul class="navbar-nav">
+                    <div class="search-box">
+                        <a href="#" class="nav-link"><i class="fa-brands fa-searchengin"></i></a>
+                    </div>
+                    <a href="#" class="nav-link"><i class="fa-brands fa-github"></i></a>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!--x-- Header --x--> 
+
+    <!-- Main -->
+    <main id="site-main">
+        <section class="container">
+            <article id="post">
+                <div class="headings text-center">
+                    <div class="category">
+                        <a href="#" class="nav-link">Java</a>
+                    </div>
+                    <div class="title">
+                        <h2 class="text-title text-dark display-1">Using Blotter JS</h2>
+                    </div>
+                    <div class="meta">
+                        <a href="#" class="link display-2 text-secondary px-1"><i class="fas fa-user text-secondary"> Andrew Babilonia</i></a>
+                    </div>
+                </div>
+                <!-- Content -->
+                <div class="content text-dark display-2 secondary-title mt-3">
+                    <p>
+                        One of the fun things about JavaScript is how there are so many interesting libraries out
+                        there to use. I was working on my portfolio and was interested in doing some type of text transformation 
+                        on my home page. After some research I stumbled across something really interesting called Blotter. They have extensive documentation out there that is very detailed but, it is a lot of fun to play with. Let's take a look at what we can create!
+                    </p>
+                </div>
+                <div class="blotter-container">
+                    <div class="container1"></div>
+                    <div class="container2"></div>
+                    <div class="container3"></div>
+                </div>
+                <div class="content text-dark display-2 secondary-title mt-3">
+                    <p>
+                        I mean, come on! That is a lot of fun to look at. Let's take a deeper look at what we need to do to add this into any of your projects or website ideas. I would recommend visiting <a href="https://blotter.js.org" target="_blank">blotter's website</a> for the full documentation, but I want to walk through how to develop the mouse effect on blotter's homepage. There are a couple of things we need to add to our head in our html file. You will need to copy a couple things from their <a href="https://github.com/bradley/Blotter" target="_blank">GitHub</a> page. Make sure to copy the minified version of Blotter and save it to your project. Also make sure to include at least one material from any of Blotter's ready made-effects. We will be taking a look at the <a href="https://github.com/bradley/Blotter/blob/master/build/materials/channelSplitMaterial.js" target="_blank">ChannelSplitMaterial</a>. In the above example, the channel split material effect is affecting "how cool". What I want to show you is how to add an effect to it with our mouse's coordinates to either have with or without effect, which is what we see on blotter's homepage.
+                    </p>
+                    <p>
+                        Below is an example of how uOffset and uRotation works for the channel split material. uOffset uses the RBG values and spreads the red and blue in opposite directions while the green stays in its original position. You can see this happen by dragging your mouse up and down on the page to see the effect in motion. The second is uOffset. This effect describes the distance that your RGB values should spread. By using document.onmousemove, (which you can research on the <a href="https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onmousemove" target="_blank">MDN</a>) you can see the effect in motion. The values of uOffset are anywhere between 0 and 1. I noticed that when you use a negative value it eliminates a lot of the blurring effect that takes place. 
+                    </p>
+                </div>
+                <div class="blotter-container">
+                    <div class="container4"></div>
+                </div>
+                <div class="content text-dark display-2 secondary-title mt-3">
+                    <p>
+                        Below is the code that was used to create this really cool effect. It is very similar to the starter code found on <a href="">blogger.js</a>'s website.
+                    </p>
+                </div>
+                <div class="code-container">
+                    <p class="language" id="language-copy">HTML/CSS/JAVASCRIPT</p>
+                    <div class="code-wrapper">
+                        <pre>
+                            <code id="code">
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;script src="path/to/blotter.min.js"&gt;&lt;/script&gt;
+        &lt;script src="path/tochannelSplitMaterial.js"&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div class="container" style="background:hsl(231,77%,90%);
+        display:flex;justify-content:center;align-items:center"&gt;&lt;/div&gt;
+
+        &lt;script&gt;
+            var text = new Blotter.Text("AsDfG", {
+                family: "sans",
+                size: 100,
+                paddingLeft: 40,
+                paddingRight: 40
+            })
+          
+            var material = new Blotter.ChannelSplitMaterial();
+          
+            var blotter = new Blotter(material, {
+            texts: text
+            })
+            var container = document.querySelector('.container')
+            var scope = blotter.forText(text)
+            scope.appendTo(container)
+            document.onmousemove = moveEffect;
+            function moveEffect(event) {
+                material.uniforms.uRotation.value = (event.clientY * 0.8);
+                material.uniforms.uOffset.value = (event.clientY * -0.00017);
+            }
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;html&gt;
+                            </code>
+                            <span id="copy-success">Code copied</span>
+                        </pre>
+                        <button id="copy-button">Copy</button>
+                    </div>
+                    
+                </div>
+            </article>
+        </section>
+    </main>
+        <!--x-- Main --x-->
+
+<!-- Footer -->
+
+<footer id="footer">
+    <div class="container">
+        <div class="row mb-3">
+            <div class="col-3">
+                <h2 class="footer-title secondary-title">About Me</h2>
+                <div class="secondary-title text-dark">
+                    <p class="mt-2">
+                    Student and coding enthusiast. I like to making computers do fun things. I am currently working on my Bachelor's degree.
+                    </p>
+                    <div class="email">ababilon@gmu.edu
+                        <i class="fas fa-envelope text-dark"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <h2 class="footer-title secondary-title">Featured Posts</h2>
+                <div class="feature-post">
+                    <div class="flex-item">
+                        <article class="article">
+                            <div class="d-flex">
+                                <a href="#">
+                                    <div class="px-1">
+                                        <a href="#" class="text-title display-2 text-dark">Coming Soon</a>
+                                        <p class="secondary-title text-secondary display-3"></p>
+                                    </div>
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="flex-item">
+                        <article class="article">
+                            <div class="d-flex">
+                                <a href="#">
+                                    <div class="px-1">
+                                        <a href="#" class="text-title display-2 text-dark"></a>
+                                        <p class="secondary-title text-secondary display-3"></p>
+                                    </div>
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="flex-item">
+                        <article class="article">
+                            <div class="d-flex">
+                                <a href="#">
+                                    <div class="px-1">
+                                        <a href="#" class="text-title display-2 text-dark"></a>
+                                        <p class="secondary-title text-secondary display-3"></p>
+                                    </div>
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <h2 class="footer-title secondary-title">Links</h2>
+                <div class="tags-social">
+                    <div class="d-flex flex-wrap">
+                        <a href="#" class="nav-link btn bg-dark"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- copyright -->
+        <div class="copyright">
+            <p class="text-center text-secodary display-2">&#169 2022<a href="#" class="text-primary"> Babilonia's Blog</a></p>
+        </div>
+        <!--x-- copyright --x-->
+    </div>
+</footer>
+
+<!--x-- Footer --x-->
+
+<!-- Masontry Library Horizontal Grid-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js" integrity="sha512-JRlcvSZAXT8+5SQQAvklXGJuxXTouyq8oIMaYERZQasB8SBDHZaUbeASsJWpk0UUrf89DP3/aefPPrlMR1h1yQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>-->
+<!-- Custom JS File -->
+<script src="../main.js"></script>
+<script src="../copybutton.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js"></script>
+<script src="./blotterExample.js"></script>
+</body>
+</html>

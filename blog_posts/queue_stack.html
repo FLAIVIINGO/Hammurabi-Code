@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hammurabi's Code</title>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Highlight.js CSS -->
+    <link rel="stylesheet" href="../dracula.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header id="header" class="shadow bg-dark">
+        <nav class="container navbar">
+            <a href="../index.html" class="nav-brand text-light uppercase">Hammurabi's Code</a>
+
+            <!-- Toggle Button -->
+            <button class="toggle-button">
+                <span><i class="fa-brands fa-old-republic"></i></span>
+            </button>
+            <!-- Collapse on Toggle-->
+            <div class="collapse">
+                <ul class="navbar-nav">
+                    <a href="../index.html" class="nav-link">Home</a>
+                    <a href="#" class="nav-link">Contact</a>
+                    <a href="#" class="nav-link">Portfolio</a>
+                </ul>
+            </div>
+            <!--x- Collapse on Toggle -x-->
+            <div class="collapse">
+                <ul class="navbar-nav">
+                    <div class="search-box">
+                        <a href="#" class="nav-link"><i class="fa-brands fa-searchengin"></i></a>
+                    </div>
+                    <a href="#" class="nav-link"><i class="fa-brands fa-github"></i></a>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!--x-- Header --x--> 
+
+    <!-- Main -->
+    <main id="site-main">
+        <section class="container">
+            <article id="post">
+                <div class="headings text-center">
+                    <div class="category">
+                        <a href="#" class="nav-link">Java</a>
+                    </div>
+                    <div class="title">
+                        <h2 class="text-title text-dark display-1">How to Implement a Queue Using a Stack</h2>
+                    </div>
+                    <div class="meta">
+                        <a href="#" class="link display-2 text-secondary px-1"><i class="fas fa-user text-secondary"> Andrew Babilonia</i></a>
+                    </div>
+                </div>
+
+                <!-- Content -->
+                <div class="content text-dark display-2 secondary-title mt-3">
+                    <p>A common question from interviewers, in this tutorial we will take a look at how to implement a queue data structure by using the stack data structure. There are a couple of things that we need to understand about these data structures in order to come to a plausible solution. So, let us take a look at the stack data structure. Visualize a stack of books, we place one book on top of another and our stack grows in height. We call this a push. If we want to take a book from the stack we always take it from the top, this is called a pop. Below, we can see how that operates with a simple example. Starting off, the number 5 is pushed into the stack,  followed by 4, 3 and 2. If we want a number from the stack, we can only take it from the top. So we would pop the number 2. If we continued to withdraw integers from our stack, our order would be 2, 3, 4, 5. In computer science, we have a brief description of what this data structures function is, which is LIFO, last in - first out. The last item that is placed in the stack is the first item drawn from the stack.
+                    </p>
+                    <h2 class="text-title text-dark display-2 text-center">Stack Example</h2>
+                    <div class="thumbnail mt-3">
+                        <img src="../assets/stack_example1.PNG" alt="stack example" class="thumbnail">
+                    </div>
+                    <h2 class="text-title text-dark display-2 text-center">Queue Example</h2>
+                    <div class="thumbnail mt-3">
+                        <img src="../assets/queue_example1.PNG" alt="stack example" class="thumbnail">
+                    </div>
+                    <p>
+                        Now we come to the queue. A queue is meant to be thought of as a line. Imagine you are in line at a store, waiting to purchase an item. The customer that arrived first is the first customer to be taken care of. This structure follows a FIFO function, first in - first out. Inserting the data into the queue would be the same as the stack, however, when taking from the queue, our ordering would be 5, 4, 3, 2. So, how would we get a stack to have the same behavior?
+                    </p>
+                    <h2 class="text-title text-dark display-2 text-center">Approach</h2>
+                    <p>
+                        The solution would involve using another stack. We will be using the java util package Stack that is included in Java. Stack 1 would be the stack used to push our elements into. Stack 2 would be our queue ordering. Our pop functionality would check if Stack 2 is empty. If Stack 2 is empty we would then iterate through stack 1 and push all the elements of stack 1 into stack 2. We would then pop what's in stack 2. The peek functionality would operate in almost the same fashion as pop. We will check if stack 2 is not empty. If that condition is satisfied, we can peek from stack 2. If stack 2 is empty, then we need to push all of stack 1 to stack 2. Below, we can see the same exercise but for two stacks. 
+                    </p>
+                    <h2 class="text-title text-dark display-2 text-center">Populate Stack 1</h2>
+                    <div class="thumbnail mt-3">
+                        <img src="../assets/stack_example1.PNG" alt="stack example" class="thumbnail">
+                    </div>
+                    <h2 class="text-title text-dark display-2 text-center">Populate Stack 2</h2>
+                    <div class="thumbnail mt-3">
+                        <img src="../assets/stack_example2.PNG" alt="stack example" class="thumbnail">
+                    </div>
+                    <p>
+                        Now, if we take from the top of the stack it would be in the same order as the queue! Below is the Java code that is being used.
+                    </p>
+                    <div class="code-container">
+                        <p class="language" id="language-copy">Java</p>
+                        <div class="code-wrapper">
+                            <pre>
+                                <code id="code">
+class StackToQueue {
+    private Stack&lt;Integer&gt; stack1;
+    private Stack&lt;Integer&gt; stack2;
+
+    public StackToQueue() {
+        stack1 = new Stack&lt;&gt;();
+        stack2 = new Stack&lt;&gt;();
+    }
+
+    public void push(int element) {
+        stack1.push(element);
+    }
+
+    public int pop() {
+        if(stack2.isEmpty())
+            while(!stack1.isEmpty())
+                stack2.push(stack1.pop());
+        return stack2.pop();
+    }
+
+    public int peek() {
+        if(!stack2.isEmpty())
+            return stack2.peek();
+        else
+            while(!stack1.isEmpty())
+                stack2.push(stack1.pop());
+        return stack2.peek();
+    }
+
+    public boolean empty() {
+        return stack1.isEmpty() && stack2.isEmpty();
+    }
+}
+                                </code>
+                                <span id="copy-success">Code copied</span>
+                            </pre>
+                            <button id="copy-button">Copy</button>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                
+            </article>
+        </section>
+    </main>
+    <!--x-- Main --x-->
+
+<!-- Footer -->
+
+<footer id="footer">
+    <div class="container">
+        <div class="row mb-3">
+            <div class="col-3">
+                <h2 class="footer-title secondary-title">About Me</h2>
+                <div class="secondary-title text-dark">
+                    <p class="mt-2">
+                        Student and coding enthusiast. I like to making computers do fun things. I am currently working on my Bachelor's degree.
+                    </p>
+                    <div class="email">ababilon@gmu.edu
+                        <i class="fas fa-envelope text-dark"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <h2 class="footer-title secondary-title">Featured Posts</h2>
+                <div class="feature-post">
+                    <div class="flex-item">
+                        <article class="article">
+                            <div class="d-flex">
+                                <a href="#">
+                                    <div class="px-1">
+                                        <a href="#" class="text-title display-2 text-dark">Coming Soon</a>
+                                        <p class="secondary-title text-secondary display-3"></p>
+                                    </div>
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="flex-item">
+                        <article class="article">
+                            <div class="d-flex">
+                                <a href="#">
+                                    <div class="px-1">
+                                        <a href="#" class="text-title display-2 text-dark"></a>
+                                        <p class="secondary-title text-secondary display-3"></p>
+                                    </div>
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="flex-item">
+                        <article class="article">
+                            <div class="d-flex">
+                                <a href="#">
+                                    <div class="px-1">
+                                        <a href="#" class="text-title display-2 text-dark"></a>
+                                        <p class="secondary-title text-secondary display-3"></p>
+                                    </div>
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <h2 class="footer-title secondary-title">Links</h2>
+                <div class="tags-social">
+                    <div class="d-flex flex-wrap">
+                        <a href="#" class="nav-link btn bg-dark"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- copyright -->
+        <div class="copyright">
+            <p class="text-center text-secodary display-2">&#169 2022<a href="#" class="text-primary"> Babilonia's Blog</a></p>
+        </div>
+        <!--x-- copyright --x-->
+    </div>
+</footer>
+
+<!--x-- Footer --x-->
+
+<!-- Masontry Library Horizontal Grid-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js" integrity="sha512-JRlcvSZAXT8+5SQQAvklXGJuxXTouyq8oIMaYERZQasB8SBDHZaUbeASsJWpk0UUrf89DP3/aefPPrlMR1h1yQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>-->
+<!-- Custom JS File -->
+<script src="../main.js"></script>
+<script src="../copybutton.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js"></script>
+</body>
+</html>
