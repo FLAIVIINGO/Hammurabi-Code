@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hammurabi's Code</title>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Highlight.js CSS -->
+    <link rel="stylesheet" href="../dracula.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header id="header" class="shadow bg-dark">
+        <nav class="container navbar">
+            <a href="../index.html" class="nav-brand text-light uppercase">Hammurabi's Code</a>
+
+            <!-- Toggle Button -->
+            <button class="toggle-button">
+                <span><i class="fa-brands fa-old-republic"></i></span>
+            </button>
+            <!-- Collapse on Toggle-->
+            <div class="collapse">
+                <ul class="navbar-nav">
+                    <a href="../index.html" class="nav-link">Home</a>
+                    <a href="#" class="nav-link">Contact</a>
+                    <a href="#" class="nav-link">Portfolio</a>
+                </ul>
+            </div>
+            <!--x- Collapse on Toggle -x-->
+            <div class="collapse">
+                <ul class="navbar-nav">
+                    <div class="search-box">
+                        <a href="#" class="nav-link"><i class="fa-brands fa-searchengin"></i></a>
+                    </div>
+                    <a href="https://github.com/FLAIVIINGO" target="_blank" class="nav-link"><i class="fa-brands fa-github"></i></a>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!--x-- Header --x--> 
+
+    <!-- Main -->
+    <main id="site-main">
+        <section class="container">
+            <article id="post">
+                <div class="headings text-center">
+                    <div class="category">
+                        <a href="#" class="nav-link">Java</a>
+                    </div>
+                    <div class="title">
+                        <h2 class="text-title text-dark display-1">Your First C Program</h2>
+                    </div>
+                    <div class="meta">
+                        <a href="#" class="link display-2 text-secondary px-1"><i class="fas fa-user text-secondary"> Andrew Babilonia</i></a>
+                    </div>
+                </div>
+
+                <!-- Content -->
+                <div class="content text-dark display-2 secondary-title mt-3">
+                    <p>
+                        C is a difficult language for beginners. Implemented features can work perfectly fine in one context, but crash in another. It demands that the programmer must know how each of the features works, and also how to use them. It is vital, as a C programmer, to understand everything that is typed. This language is not as forgiving as many modern languages i.e. Python and JavaScript. So, we will start off with a simple program but instead of just typing in the code and seeing that it works, I would like to explain, in as much detail as I can, what each line is and what is behind it. Below is a simple C program that prints Hello to the console. I will be explaining this operation on Windows Command Prompt (Cmd.exe). 
+                    </p>
+                    
+                    <div class="code-container">
+                        <p class="language" id="language-copy">C</p>
+                        <div class="code-wrapper">
+                            <pre>
+                                <code id="code">
+#include&lt;stdio.h&gt;
+
+int main(int argc, char* argv[]) {
+    printf("Hello");
+
+    return 0;
+}
+                                </code>
+                                <span id="copy-success">Code copied</span>
+                            </pre>
+                            <button id="copy-button">Copy</button>
+                        </div>
+                        
+                    </div>
+                    <p>
+                        Looking at line 1, we have a octothorpe (hashtag) to the left of the word include. This is followed by stdio.h which is surrounded by less than and greater than signs. The octothorpe character is a special command line that controls the preprocessor. The C preprocessor processes the source text of a C program before the compiler reads the actual source program. The text that immediately follows is called a directive. In this case our directive is include. What include dictates is that it inserts text from another source file. That source file name that we are calling from is stdio.h. The stdio.h, or standard library, is provided by the installation of GCC. If you would like more information on GCC and its installation process, please visit <a href="https://gcc.gnu.org/install/" target="_blank">here</a>. This library supplies our program with a long list of library functions, but the one we are interested in using is printf. I would suggest commenting out the first line (insert // to the left of the octothorpe), and seeing the warning that occurs when compiling. To compile, make sure that GCC is installed by typing gcc -v, which should return a version of GCC that is on your device. To keep things simple we will just type gcc followed by the .c name given to the program. 
+                    </p>
+                    <div class="thumbnail mt-3">
+                        <img src="../assets/compile_hello.png" alt="c compilation" class="thumbnail">
+                    </div>
+                    <div class="thumbnail mt-3">
+                        <img src="../assets/c_compiler_warning.png" alt="c warning" class="thumbnail">
+                    </div>
+                    <p>
+                        The error that we see specifies a warning that there is an implicit declaration of a built-in function. This is the reasoning behind including it in our c program. In order to execute a C program, we must include a main method that is expected by the runtime library. Main has two arguments, the first one being argc, which is the number of arguments present upon execution. This will contain one argument, which is our executable file named a.exe. The second argument is an array of character pointers which again, will only hold one character array called a.exe. We will take a look at how to use these two arguments in another blog post. Inside of our main function is the call to printf that prints the text that is surrounded by double quotation marks. Finally, we reach our return statment that returns an exit call. This exit call is 0, which means that it has succeeded. It takes some practice, but the best way to learn in C is to break your code and start reading the warnings and errors. This will not only increase your knowledge of this specific language, but it will also make debugging much simpler in the future.
+                    </p>
+                </div>
+                
+            </article>
+        </section>
+    </main>
+    <!--x-- Main --x-->
+
+<!-- Footer -->
+
+<footer id="footer">
+    <div class="container">
+        <div class="row mb-3">
+            <div class="col-3">
+                <h2 class="footer-title secondary-title">About Me</h2>
+                <div class="secondary-title text-dark">
+                    <p class="mt-2">
+                        Student and coding enthusiast. I like to making computers do fun things. I am currently working on my Bachelor's degree.
+                    </p>
+                    <div class="email">ababilon@gmu.edu
+                        <i class="fas fa-envelope text-dark"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <h2 class="footer-title secondary-title">Featured Posts</h2>
+                <div class="feature-post">
+                    <div class="flex-item">
+                        <article class="article">
+                            <div class="d-flex">
+                                <a href="#">
+                                    <div class="px-1">
+                                        <a href="#" class="text-title display-2 text-dark">Coming Soon</a>
+                                        <p class="secondary-title text-secondary display-3"></p>
+                                    </div>
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="flex-item">
+                        <article class="article">
+                            <div class="d-flex">
+                                <a href="#">
+                                    <div class="px-1">
+                                        <a href="#" class="text-title display-2 text-dark"></a>
+                                        <p class="secondary-title text-secondary display-3"></p>
+                                    </div>
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="flex-item">
+                        <article class="article">
+                            <div class="d-flex">
+                                <a href="#">
+                                    <div class="px-1">
+                                        <a href="#" class="text-title display-2 text-dark"></a>
+                                        <p class="secondary-title text-secondary display-3"></p>
+                                    </div>
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <h2 class="footer-title secondary-title">Links</h2>
+                <div class="tags-social">
+                    <div class="d-flex flex-wrap">
+                        <a href="https://github.com/FLAIVIINGO" target="_blank" class="nav-link btn bg-dark"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- copyright -->
+        <div class="copyright">
+            <p class="text-center text-secodary display-2">&#169 2022<a href="#" class="text-primary"> Babilonia's Blog</a></p>
+        </div>
+        <!--x-- copyright --x-->
+    </div>
+</footer>
+
+<!--x-- Footer --x-->
+
+<!-- Masontry Library Horizontal Grid-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js" integrity="sha512-JRlcvSZAXT8+5SQQAvklXGJuxXTouyq8oIMaYERZQasB8SBDHZaUbeASsJWpk0UUrf89DP3/aefPPrlMR1h1yQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>-->
+<!-- Custom JS File -->
+<script src="../main.js"></script>
+<script src="../copybutton.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js"></script>
+</body>
+</html>

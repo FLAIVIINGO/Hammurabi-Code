@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     hljs.highlightAll();
+    //const codeBlock = document.getElementById('code');
     const codeBlock = document.getElementById('code');
     const copyButton = document.getElementById('copy-button');
     const copySuccess = document.getElementById('copy-success');
@@ -7,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
 
     const copyTextHandler = () => {
+        console.log("copy text handler");
         const text = codeBlock.innerText;
         
         navigator.clipboard.writeText(text).then(
@@ -23,4 +25,5 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     copyButton.addEventListener('click', copyTextHandler);
+    
 });

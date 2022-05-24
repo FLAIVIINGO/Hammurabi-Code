@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hammurabi's Code</title>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Highlight.js CSS -->
+    <link rel="stylesheet" href="../dracula.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header id="header" class="shadow bg-dark">
+        <nav class="container navbar">
+            <a href="../index.html" class="nav-brand text-light uppercase">Hammurabi's Code</a>
+
+            <!-- Toggle Button -->
+            <button class="toggle-button">
+                <span><i class="fa-brands fa-old-republic"></i></span>
+            </button>
+            <!-- Collapse on Toggle-->
+            <div class="collapse">
+                <ul class="navbar-nav">
+                    <a href="../index.html" class="nav-link">Home</a>
+                    <a href="#" class="nav-link">Contact</a>
+                    <a href="#" class="nav-link">Portfolio</a>
+                </ul>
+            </div>
+            <!--x- Collapse on Toggle -x-->
+            <div class="collapse">
+                <ul class="navbar-nav">
+                    <div class="search-box">
+                        <a href="#" class="nav-link"><i class="fa-brands fa-searchengin"></i></a>
+                    </div>
+                    <a href="https://github.com/FLAIVIINGO" target="_blank" class="nav-link"><i class="fa-brands fa-github"></i></a>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!--x-- Header --x--> 
+
+    <!-- Main -->
+    <main id="site-main">
+        <section class="container">
+            <article id="post">
+                <div class="headings text-center">
+                    <div class="category">
+                        <a href="#" class="nav-link">Javascript</a>
+                    </div>
+                    <div class="title">
+                        <h2 class="text-title text-dark display-1">Making a Bouncy Ball Using Physics</h2>
+                    </div>
+                    <div class="meta">
+                        <a href="#" class="link display-2 text-secondary px-1"><i class="fas fa-user text-secondary"> Andrew Babilonia</i></a>
+                    </div>
+                </div>
+
+                <!-- Content -->
+                <div class="content text-dark display-2 secondary-title mt-3">
+                    <p>
+                        In this blog post, we are going to take a look at some javascript. Specifically speaking, we will have some fun with physics! The idea is to make a bouncing ball using Javascript and HTML 5 Canvas. Before we get start coding the physics involved, we need to take a quick detour to learn about the Canvas coordinate system. The Canvas coordinate system is not quite the same as the Cartesian coordinate system. The x-coordinate still runs from left to right but the y-coordinate goes from the top to bottom. The Cartesian system is known as a right-handed coordinate system, therefore we can see that the Canvas coordinate system is a left-handed coordinate system.
+                    </p>
+                    <h2 class="text-title text-dark display-2 text-center">2D Coordinate systems (left = Cartesian, right = Canvas)</h2>
+                    <div class="thumbnail mt-3">
+                        <img src="../assets/canvas-coordinate-space.png" alt="stack example" class="thumbnail">
+                    </div>     
+                    <p>
+                        Sounds fun, right? So lets start with some of the starter code to draw a ball onto the canvas and then we will jump into the physics side of things. The first thing that we want to do is create an HTML file that is incredibly basic. It will just have a canvas and a basic height and width. We will also link it to a stylesheet and a script.
+                    </p>               
+                    <div class="code-container">
+                        <p class="language" id="language-copy">HTML</p>
+                        <div class="code-wrapper">
+                            <pre>
+                                <code id="code">
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset="utf-8"&gt;
+&lt;title&gt;Bouncing Ball&lt;/title&gt;
+&lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;canvas id="canvas" width="700" height="500"&gt;&lt;/canvas&gt;
+&lt;script src="ball.js"&gt;&lt;/script&gt;
+&lt;script src="bouncing-ball.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+                                </code>
+                                <span id="copy-success">Code copied</span>
+                            </pre>
+                            <button id="copy-button">Copy</button>
+                        </div>
+                        
+                    </div>
+                    <p>
+                        I'll also include a simple css file to center the canvas on the page.
+                    </p>
+                    <div class="code-container">
+                        <p class="language" id="language-copy">CSS</p>
+                        <div class="code-wrapper">
+                            <pre>
+                                <code id="code">
+body {
+    background-color: grey;
+}
+#canvas {
+    margin: auto;
+    padding: 0;
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #000;
+}
+                                </code>
+                                <span id="copy-success">Code copied</span>
+                            </pre>
+                            <button id="copy-button">Copy</button>
+                        </div>
+                        
+                    </div>
+                    <p>
+                        One last thing before the meat and potatoes. We need a ball class whose constructor takes in a radius and a color for the ball so that we can draw the ball. The ball will have four more attributes, the x-coordinate position, the y-coordinate position and the horzontal and vertical velocity. The ball class will have one method called draw which will take in one argument, an HTML canvas element that is retrieved using the getContext() method. This method returns a drawing context on the canvas. If you'd like to read more, please refer to the <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/getContext" target="_blank">MDN</a>.
+                    </p>
+                    <div class="code-container">
+                        <p class="language" id="language-copy">JavaScript</p>
+                        <div class="code-wrapper">
+                            <pre>
+                                <code id="code">
+class Ball {
+    constructor(radius, color) {
+        this.radius = radius;
+        this.color = color;
+        this.x = 0;
+        this.y = 0;
+        this.vx = 0;
+        this.vy = 0;
+    }
+
+    draw(context) {
+        context.fillStyle = this.color;
+        context.beginPath();
+        context.arc(this.x, this.y, this.radius, 0, 2*Math.PI, true);
+        context.closePath();
+        context.fill();
+    }
+}
+                                </code>
+                                <span id="copy-success">Code copied</span>
+                            </pre>
+                            <button id="copy-button">Copy</button>
+                        </div>   
+                    </div>
+                    <p>
+                        Let's take a look at this code a little further. The draw method that takes in the HTML 5 canvas drawing context will use the fillStyle property of the Canvas 2D API. It will specify the color inside shapes. We then need to draw a path that will render the shape of a circle by calling beginPath. This is followed by the arc property to draw the path we called previously. This will be set in our bouncing ball class and will draw a perfect circle. The parameters of the arc property take in 6 properties. The first two will specify the horizontal and vertical coordinate of the arc's center. Next is the radius of the arc which must be positive, followed by a start and end angle in radians that are measured from the positive x-axis. Last is an optional boolean value for whether we want the arc to draw counter-clockwise of clockwise. The default is false (clockwise). Now that we've drawn the circle we can close the path and finally fill the circle with our fillStyle property. 
+                    </p>
+                    <p>
+                        Now comes the fun part which is how we animate the ball. We will assign the ball a radius of 20 and most importantly, we need to initialize acceleration due to gravity. For now, that value is 0.1 but feel free to play around with that value. Initialization of a global ball variable will be used in the init method. The ball will be given an initial horizontal and vertical position, as well as an initial horizontal and vertical speed. The draw method from the ball class will be called and we now call setInterval with two arguments, the method onEachStep which will calculate not only the vertical and horzontal speed, but it will also calculate the path of the ball after it hits the ground or the left and right sides of the canvas object. The setInterval method repeatedly calls a function with a fixed time delay. We will give it 60fps. On each step we will add gravity to the balls vertical speed over time. The same will be said about the vertical position by adding the vertical speed that was calculated. Horizontal speed will be used to increase the balls horizontal position. All code will be commented so that it is easier to follow. Since there are three walls we are considering, we need some conditionals on an appropriate action to take if the ball hits one of the three walls. The first conditional is if the ball hits the ground. This can be calculated by checking if the balls vertical position is greater than the canvas height minus the radius, we will reposition the ball at that value and reverse the direction of the vertical speed by multiplying it by a negative value. This value will also be a little less than the gravity value given earlier so that we see a reduction in speed. This might seem confusing at first because of the knowledge of the Cartesian coordiante system. But, remember that in the Canvas Coordinate system, the y-coordinate increases as it goes down. For the right wall, we will check if the ball's horizontal position is greater than the canvas width, minus the radius. The same action will take place with the reduction of the balls speed. Lastly, if the balls horizontal position is less than 20, we have hit the left wall and the reduction of horizontal speed with be reduced. Finally, we need to clear the rectangle and redraw the ball. This will loop indefinately. Below is the code.
+                    </p>
+                    <div class="code-container">
+                        <p class="language" id="language-copy">JavaScript</p>
+                        <div class="code-wrapper">
+                            <pre>
+                                <code id="code">
+var canvas = document.getElementById('canvas');
+var context = canvas.getContext('2d'); 
+                                    
+var radius = 20;
+var color = "#4b0979";
+var g = 0.1; // acceleration due to gravity
+var ball;
+console.log(canvas.width)
+window.onload = init; 
+                                     
+function init() {
+    ball = new Ball(radius, color);
+    ball.x = 50;  // initial horizontal position
+    ball.y = 50;  // initial vertical position
+    ball.vx = 4 ;  // initial horizontal speed
+    ball.vy = 0;  // initial vertical speed
+    ball.draw(context);
+    setInterval(onEachStep, 1000/60); // 60 fps
+};
+                                     
+function onEachStep() {  
+    ball.vy += g; // gravity increases the vertical speed
+    ball.x += ball.vx; // horizontal speed increases horizontal position 
+    ball.y += ball.vy; // vertical speed increases vertical position
+                                     
+    if (ball.y &gt; canvas.height - radius){ // if ball hits the ground
+        ball.y = canvas.height - radius; // reposition it at the ground
+        ball.vy *= -0.8; // then reverse and reduce its vertical speed
+    }
+    if(ball.x &gt; canvas.width - radius) { // if ball hits the right wall
+        ball.vx *= -0.8;                   // reverse and reduce its horizontal speed
+    }
+    if(ball.x &lt; 20) { // if ball hits the left wall
+                                    
+        ball.vx *= -0.8;
+    }
+                                      
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    ball.draw(context); // draw the ball
+};
+                                </code>
+                                <span id="copy-success">Code copied</span>
+                            </pre>
+                            <button id="copy-button">Copy</button>
+                        </div>   
+                    </div>
+                    <p>
+                        There is quite a bit of material here, so I would suggest playing with as much code as you can. It will help you understand the complexities of drawing on canvas that much easier.
+                    </p>
+                </div>
+            </article>
+        </section>
+    </main>
+    <!--x-- Main --x-->
+
+<!-- Footer -->
+
+<footer id="footer">
+    <div class="container">
+        <div class="row mb-3">
+            <div class="col-3">
+                <h2 class="footer-title secondary-title">About Me</h2>
+                <div class="secondary-title text-dark">
+                    <p class="mt-2">
+                        Student and coding enthusiast. I like to making computers do fun things. I am currently working on my Bachelor's degree.
+                    </p>
+                    <div class="email">ababilon@gmu.edu
+                        <i class="fas fa-envelope text-dark"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <h2 class="footer-title secondary-title">Featured Posts</h2>
+                <div class="feature-post">
+                    <div class="flex-item">
+                        <article class="article">
+                            <div class="d-flex">
+                                <a href="#">
+                                    <div class="px-1">
+                                        <a href="#" class="text-title display-2 text-dark">Coming Soon</a>
+                                        <p class="secondary-title text-secondary display-3"></p>
+                                    </div>
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="flex-item">
+                        <article class="article">
+                            <div class="d-flex">
+                                <a href="#">
+                                    <div class="px-1">
+                                        <a href="#" class="text-title display-2 text-dark"></a>
+                                        <p class="secondary-title text-secondary display-3"></p>
+                                    </div>
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="flex-item">
+                        <article class="article">
+                            <div class="d-flex">
+                                <a href="#">
+                                    <div class="px-1">
+                                        <a href="#" class="text-title display-2 text-dark"></a>
+                                        <p class="secondary-title text-secondary display-3"></p>
+                                    </div>
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <h2 class="footer-title secondary-title">Links</h2>
+                <div class="tags-social">
+                    <div class="d-flex flex-wrap">
+                        <a href="https://github.com/FLAIVIINGO" target="_blank" class="nav-link btn bg-dark"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- copyright -->
+        <div class="copyright">
+            <p class="text-center text-secodary display-2">&#169 2022<a href="#" class="text-primary"> Babilonia's Blog</a></p>
+        </div>
+        <!--x-- copyright --x-->
+    </div>
+</footer>
+
+<!--x-- Footer --x-->
+
+<!-- Masontry Library Horizontal Grid-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js" integrity="sha512-JRlcvSZAXT8+5SQQAvklXGJuxXTouyq8oIMaYERZQasB8SBDHZaUbeASsJWpk0UUrf89DP3/aefPPrlMR1h1yQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>-->
+<!-- Custom JS File -->
+<script src="../main.js"></script>
+<script src="../copybutton.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js"></script>
+</body>
+</html>
