@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hammurabi's Code</title>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Highlight.js CSS -->
+    <link rel="stylesheet" href="../dracula.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header id="header" class="shadow bg-dark">
+        <nav class="container navbar">
+            <a href="../index.html" class="nav-brand text-light uppercase">Hammurabi's Code</a>
+
+            <!-- Toggle Button -->
+            <button class="toggle-button">
+                <span><i class="fa-brands fa-old-republic"></i></span>
+            </button>
+            <!-- Collapse on Toggle-->
+            <div class="collapse">
+                <ul class="navbar-nav">
+                    <a href="../index.html" class="nav-link">Home</a>
+                    <a href="#" class="nav-link">Contact</a>
+                    <a href="#" class="nav-link">Portfolio</a>
+                </ul>
+            </div>
+            <!--x- Collapse on Toggle -x-->
+            <div class="collapse">
+                <ul class="navbar-nav">
+                    <div class="search-box">
+                        <a href="#" class="nav-link"><i class="fa-brands fa-searchengin"></i></a>
+                    </div>
+                    <a href="https://github.com/FLAIVIINGO" target="_blank" class="nav-link"><i class="fa-brands fa-github"></i></a>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!--x-- Header --x--> 
+
+    <!-- Main -->
+    <main id="site-main">
+        <section class="container">
+            <article id="post">
+                <div class="headings text-center">
+                    <div class="category">
+                        <a href="#" class="nav-link">SQL</a>
+                    </div>
+                    <div class="title">
+                        <h2 class="text-title text-dark display-1">Creating a Database and Table In SQL</h2>
+                    </div>
+                    <div class="meta">
+                        <a href="#" class="link display-2 text-secondary px-1"><i class="fas fa-user text-secondary"> Andrew Babilonia</i></a>
+                    </div>
+                </div>
+
+                <!-- Content -->
+                <div class="content text-dark display-2 secondary-title mt-3">
+                    <p>
+                        In this tutorial we will create a simple SQL table. I will be demonstrating this in MySQL5.7. If you would like information on how to install and setup a MYSQL Command Line Client, I would advise you to visit this <a href="https://dev.mysql.com/doc/refman/5.7/en/installing.html" target="_blank">link</a>. 
+                    </p>
+                    <p>
+                        To create a table, we could directly type our commands into the command line but, in case of any errors that occur we will use a MySQL script file so that it is easier to correct mistakes in typing. This script file will have commands that are a part of the Data Manipulation Language (DML), which is a sublanguage of SQL that allows for the modification and retrieval of information from database objects. The reason for this, from painstaking mistakes on my part, is to make it as easy as possible to execute commands. Let's take a look at the code below.                  
+                    </p>
+                    <div class="code-container">
+                        <p class="language" id="language-copy">SQL</p>
+                        <div class="code-wrapper">
+                            <pre>
+                                <code id="code">
+CREATE DATABASE test_db;
+
+USE test_db;
+
+CREATE TABLE students(
+    student_id INT AUTO_INCREMENT PRIMARY KEY,
+    student_fname VARCHAR(40),
+    student_lname VARCHAR(40),
+    address VARCHAR(100),
+    gpa FLOAT(3, 2)
+);
+                                </code>
+                                <span id="copy-success">Code copied</span>
+                            </pre>
+                            <button id="copy-button">Copy</button>
+                        </div>
+                    </div>
+                    <p>
+                        Use any text editor you like, I happened to use Notepad++. Also make sure to save the file as .sql. The first line will use the DML command CREATE DATABASE, which will create our database, I happened to name it test_db but feel free to name it what you want. The next command allows us to USE this database. The CREATE TABLE command will create our student table which holds three different data types. The first is an integer, which is used for the student ID, a necessary item in the case of students who may share the same name. This id is a primary key which means that it is a unique identifier. There is also an added command of auto increment which automatically increments the primary key by one at each addition to the table. The next data type is a VARCHAR, a character string data type that takes in an argument of an integer that specifies the maximum number of characters allowed in the string. Lastly, we have a FLOAT data type which contains the students gpa. This float takes in two arguments, the first is the number of digits we want to specify and the second argument is for the number of digits after the decimal point. Another important point to note is that each command is ended with a semicolon. This helps with the compiler to indicate when a command ends and a new command is specified. If you'd like to run the script, we use the SOURCE command. This command will be followed by the path to your .sql file. If you would like to see what you've done, in the command line you can type DESC students, which will display the data types and column names of your table.
+                    </p>
+                    <p>
+                        In conclusion, the importance of using a script allows the programmer to make edits in the case of errors, which is incredibly likely. It is unlikely that you will be able to edit a previous statement and will have to retype the entire command. Now that we know how to create a database and a table, our next step would be to insert data into the table in another blog post.
+                    </p>
+                </div>
+                
+            </article>
+        </section>
+    </main>
+    <!--x-- Main --x-->
+
+<!-- Footer -->
+
+<footer id="footer">
+    <div class="container">
+        <div class="row mb-3">
+            <div class="col-3">
+                <h2 class="footer-title secondary-title">About Me</h2>
+                <div class="secondary-title text-dark">
+                    <p class="mt-2">
+                        Student and coding enthusiast. I like to making computers do fun things. I am currently working on my Bachelor's degree.
+                    </p>
+                    <div class="email">ababilon@gmu.edu
+                        <i class="fas fa-envelope text-dark"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <h2 class="footer-title secondary-title">Featured Posts</h2>
+                <div class="feature-post">
+                    <div class="flex-item">
+                        <article class="article">
+                            <div class="d-flex">
+                                <a href="#">
+                                    <div class="px-1">
+                                        <a href="#" class="text-title display-2 text-dark">Coming Soon</a>
+                                        <p class="secondary-title text-secondary display-3"></p>
+                                    </div>
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="flex-item">
+                        <article class="article">
+                            <div class="d-flex">
+                                <a href="#">
+                                    <div class="px-1">
+                                        <a href="#" class="text-title display-2 text-dark"></a>
+                                        <p class="secondary-title text-secondary display-3"></p>
+                                    </div>
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="flex-item">
+                        <article class="article">
+                            <div class="d-flex">
+                                <a href="#">
+                                    <div class="px-1">
+                                        <a href="#" class="text-title display-2 text-dark"></a>
+                                        <p class="secondary-title text-secondary display-3"></p>
+                                    </div>
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <h2 class="footer-title secondary-title">Links</h2>
+                <div class="tags-social">
+                    <div class="d-flex flex-wrap">
+                        <a href="https://github.com/FLAIVIINGO" target="_blank" class="nav-link btn bg-dark"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- copyright -->
+        <div class="copyright">
+            <p class="text-center text-secodary display-2">&#169 2022<a href="#" class="text-primary"> Babilonia's Blog</a></p>
+        </div>
+        <!--x-- copyright --x-->
+    </div>
+</footer>
+
+<!--x-- Footer --x-->
+
+<!-- Masontry Library Horizontal Grid-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js" integrity="sha512-JRlcvSZAXT8+5SQQAvklXGJuxXTouyq8oIMaYERZQasB8SBDHZaUbeASsJWpk0UUrf89DP3/aefPPrlMR1h1yQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>-->
+<!-- Custom JS File -->
+<script src="../main.js"></script>
+<script src="../copybutton.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js"></script>
+</body>
+</html>
