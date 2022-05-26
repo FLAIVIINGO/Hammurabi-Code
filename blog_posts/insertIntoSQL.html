@@ -53,7 +53,7 @@
                         <a href="#" class="nav-link">SQL</a>
                     </div>
                     <div class="title">
-                        <h2 class="text-title text-dark display-1">Creating a Database and Table In SQL</h2>
+                        <h2 class="text-title text-dark display-1">Inserting Values into a Table In SQL</h2>
                     </div>
                     <div class="meta">
                         <a href="#" class="link display-2 text-secondary px-1"><i class="fas fa-user text-secondary"> Andrew Babilonia</i></a>
@@ -63,27 +63,27 @@
                 <!-- Content -->
                 <div class="content text-dark display-2 secondary-title mt-3">
                     <p>
-                        In this tutorial we will create a simple SQL table. I will be demonstrating this in MySQL5.7. If you would like information on how to install and setup a MYSQL Command Line Client, I would advise you to visit this <a href="https://dev.mysql.com/doc/refman/5.7/en/installing.html" target="_blank">link</a>. 
+                         In <a href="./createSQLTable.html">this</a> previous blog post, we discussed how to create a database and a table with initialized columns by using a script. We will continue that post and now insert data into the student table. The first approach is entering in one row at a time. This is the first line that we see in the code box. We use the command INSERT INTO, followed by the table name where we can specify, in paretheses, the attributes that we want to change. The next command is VALUES. This is where we assign values to our row. But, this can be incredibly painful to do at a large scale. Starting on line four, we will see a more efficient way of entering in values. Instead of creating one parenteses pair after the VALUES command, we will chain together multiple lines of input, and have the convenience of writing this in a script so any errors that occur can easily be fixed.
                     </p>
-                    <p>
-                        To create a table, we could directly type our commands into the command line but, in case of any errors that occur we will use a MySQL script file so that it is easier to correct mistakes in typing. This script file will have commands that are a part of the Data Manipulation Language (DML), which is a sublanguage of SQL that allows for the modification and retrieval of information from database objects. The reason for this, from painstaking mistakes on my part, is to make it as easy as possible to execute commands. Let's take a look at the code below.                  
-                    </p>
+                    
                     <div class="code-container">
                         <p class="language" id="language-copy">SQL</p>
                         <div class="code-wrapper">
                             <pre>
                                 <code id="code">
-CREATE DATABASE test_db;
-
-USE test_db;
-
-CREATE TABLE students(
-    student_id INT AUTO_INCREMENT PRIMARY KEY,
-    student_fname VARCHAR(40),
-    student_lname VARCHAR(40),
-    address VARCHAR(100),
-    gpa FLOAT(3, 2)
+INSERT INTO students(student_fname, student_lname, address, gpa) VALUES(
+    'Steve', 'Smith', '123 Somewhere Lane Somewhere, Country', 3.5
 );
+INSERT INTO students(student_fname, student_lname, address, gpa) VALUES(
+	'Steve', 'Smith', '123 Somewhere Lane, SomeWhere, SomeState', 3.5
+);
+INSERT INTO students(student_fname, student_lname, address, gpa) VALUES
+('Sam', 'Smith', '123 Somewhere Lane, SomeWhere, SomeState', 2.3),
+('Angel', 'Devil', '123 Somewhere Lane, SomeWhere, SomeState', 3.3),
+('Mary', 'Abbot', '123 Somewhere Lane, SomeWhere, SomeState', 4.0),
+('Steve', 'Johnson', '123 Somewhere Lane, SomeWhere, SomeState', 3.4),
+('John', 'Elderberry', '123 Somewhere Lane, SomeWhere, SomeState', 2.5),
+('Elaine', 'Huff', '123 Somewhere Lane, SomeWhere, SomeState', 2.0);
                                 </code>
                                 <span id="copy-success">Code copied</span>
                             </pre>
@@ -91,10 +91,7 @@ CREATE TABLE students(
                         </div>
                     </div>
                     <p>
-                        Use any text editor you like, I happened to use Notepad++. Also make sure to save the file as .sql. The first line will use the DML command CREATE DATABASE, which will create our database, I happened to name it test_db but feel free to name it what you want. The next command allows us to USE this database. The CREATE TABLE command will create our student table which holds three different data types. The first is an integer, which is used for the student ID, a necessary item in the case of students who may share the same name. This id is a primary key which means that it is a unique identifier. There is also an added command of auto increment which automatically increments the primary key by one at each addition to the table. The next data type is a VARCHAR, a character string data type that takes in an argument of an integer that specifies the maximum number of characters allowed in the string. Lastly, we have a FLOAT data type which contains the students gpa. This float takes in two arguments, the first is the number of digits we want to specify and the second argument is for the number of digits after the decimal point. Another important point to note is that each command is ended with a semicolon. This helps with the compiler to indicate when a command ends and a new command is specified. If you'd like to run the script, we use the SOURCE command. This command will be followed by the path to your .sql file. If you would like to see what you've done, in the command line you can type DESC students, which will display the data types and column names of your table.
-                    </p>
-                    <p>
-                        In conclusion, the importance of using a script allows the programmer to make edits in the case of errors, which is incredibly likely. It is unlikely that you will be able to edit a previous statement and will have to retype the entire command. Now that we know how to create a database and a table, our next step would be to insert data into the table in another blog <a href="./insertIntoSQL.html">post</a>.
+                        In conclusion, chaining together our inputs into a table is far less time consuming than if you were individually input every row. Hope this helps.
                     </p>
                 </div>
                 
