@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hammurabi's Code</title>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Highlight.js CSS -->
+    <link rel="stylesheet" href="../dracula.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header id="header" class="shadow bg-dark">
+        <nav class="container navbar">
+            <a href="../index.html" class="nav-brand text-light uppercase">Hammurabi's Code</a>
+
+            <!-- Toggle Button -->
+            <button class="toggle-button">
+                <span><i class="fa-brands fa-old-republic"></i></span>
+            </button>
+            <!-- Collapse on Toggle-->
+            <div class="collapse">
+                <ul class="navbar-nav">
+                    <a href="../index.html" class="nav-link">Home</a>
+                    <a href="#" class="nav-link">Contact</a>
+                    <a href="#" class="nav-link">Portfolio</a>
+                </ul>
+            </div>
+            <!--x- Collapse on Toggle -x-->
+            <div class="collapse">
+                <ul class="navbar-nav">
+                    <div class="search-box">
+                        <a href="#" class="nav-link"><i class="fa-brands fa-searchengin"></i></a>
+                    </div>
+                    <a href="https://github.com/FLAIVIINGO" target="_blank" class="nav-link"><i class="fa-brands fa-github"></i></a>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!--x-- Header --x--> 
+
+    <!-- Main -->
+    <main id="site-main">
+        <section class="container">
+            <article id="post">
+                <div class="headings text-center">
+                    <div class="category">
+                        <a href="#" class="nav-link">Python</a>
+                    </div>
+                    <div class="title">
+                        <h2 class="text-title text-dark display-1">String Anchors and Python Regex</h2>
+                    </div>
+                    <div class="meta">
+                        <a href="#" class="link display-2 text-secondary px-1"><i class="fas fa-user text-secondary"> Andrew Babilonia</i></a>
+                    </div>
+                </div>
+
+                <!-- Content -->
+                <div class="content text-dark display-2 secondary-title mt-3">
+                    <p>
+                        In this blog post you will learn how to use string anchors from Python's re module syntax. The re module provides regular expression optiions that were similar to the ones found in Perl. If you'd like to know more about this library, please see this link: <a href="https://docs.python.org/3/library/re.html" target="_blank">Lib/re.py</a>. Regular expression syntax is a valuable asset for every programmer to know. It allows the programmer to match particular expressions to a particular string. This is helpful for situations like email verification, password verificaion or even scraping web sites where it can be highly likely that a lot of input your receiving can have countless exceptions. In this blog post we will take a look at string anchors, specifically ones that match a given text to the beginning and end of lines, words, elements, and a few other types of matching if we want a nested text. 
+                    </p>
+
+                    <p>
+                        The first string anchor we'll take a look at is the sequence \A. This sequence restricts the matching to the start of the string. The text you are looking for is placed after the sequence. Using the re library we use a method called search where we provide up to three arguments, the pattern, the string to check for the given pattern, and any flags we might need. Below is an example of finding 'uni' at the start of any string that is stored in an array. This will not work for new lines as we can see below since it is part of the same string.
+                    </p>
+                    
+                    
+                    <div class="code-container">
+                        <p class="language" id="language-copy">Python</p>
+                        <div class="code-wrapper">
+                            <pre>
+                                <code id="code">
+>>> import re
+>>> words = ['university', 'the\nuniversity', 'unicycle', 'clown\nunit']
+>>> [e for e in words if re.search(r'\Auni', e)]
+['university', 'unicycle']
+                                </code>
+                                <span id="copy-success">Code copied</span>
+                            </pre>
+                            <button id="copy-button">Copy</button>
+                        </div>
+                    </div>
+                   <p>
+                       The next string anchor will do the opposite of the previous. This string anchor will find the sequence matching at the end of the string. This sequence is \Z but, we place the text patter we are searching for to the left of \Z. 
+                   </p>
+                   <div class="code-container">
+                    <p class="language" id="language-copy">Python</p>
+                    <div class="code-wrapper">
+                        <pre>
+                            <code id="code">
+>>> import re
+>>> words = ['university', 'the\nuniversity', 'unicycle', 'clown\nunit']
+>>> [e for e in words if re.search(r'uni\Z', e)]
+['university', 'the\nuniversity']
+                            </code>
+                            <span id="copy-success">Code copied</span>
+                        </pre>
+                        <button id="copy-button">Copy</button>
+                    </div>
+                </div>
+                </div>
+                
+            </article>
+        </section>
+    </main>
+    <!--x-- Main --x-->
+
+<!-- Footer -->
+
+<footer id="footer">
+    <div class="container">
+        <div class="row mb-3">
+            <div class="col-3">
+                <h2 class="footer-title secondary-title">About Me</h2>
+                <div class="secondary-title text-dark">
+                    <p class="mt-2">
+                        Student and coding enthusiast. I like to making computers do fun things. I am currently working on my Bachelor's degree.
+                    </p>
+                    <div class="email">ababilon@gmu.edu
+                        <i class="fas fa-envelope text-dark"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <h2 class="footer-title secondary-title">Featured Posts</h2>
+                <div class="feature-post">
+                    <div class="flex-item">
+                        <article class="article">
+                            <div class="d-flex">
+                                <a href="#">
+                                    <div class="px-1">
+                                        <a href="#" class="text-title display-2 text-dark">Coming Soon</a>
+                                        <p class="secondary-title text-secondary display-3"></p>
+                                    </div>
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="flex-item">
+                        <article class="article">
+                            <div class="d-flex">
+                                <a href="#">
+                                    <div class="px-1">
+                                        <a href="#" class="text-title display-2 text-dark"></a>
+                                        <p class="secondary-title text-secondary display-3"></p>
+                                    </div>
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="flex-item">
+                        <article class="article">
+                            <div class="d-flex">
+                                <a href="#">
+                                    <div class="px-1">
+                                        <a href="#" class="text-title display-2 text-dark"></a>
+                                        <p class="secondary-title text-secondary display-3"></p>
+                                    </div>
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <h2 class="footer-title secondary-title">Links</h2>
+                <div class="tags-social">
+                    <div class="d-flex flex-wrap">
+                        <a href="https://github.com/FLAIVIINGO" target="_blank" class="nav-link btn bg-dark"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- copyright -->
+        <div class="copyright">
+            <p class="text-center text-secodary display-2">&#169 2022<a href="#" class="text-primary"> Babilonia's Blog</a></p>
+        </div>
+        <!--x-- copyright --x-->
+    </div>
+</footer>
+
+<!--x-- Footer --x-->
+
+<!-- Masontry Library Horizontal Grid-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js" integrity="sha512-JRlcvSZAXT8+5SQQAvklXGJuxXTouyq8oIMaYERZQasB8SBDHZaUbeASsJWpk0UUrf89DP3/aefPPrlMR1h1yQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>-->
+<!-- Custom JS File -->
+<script src="../main.js"></script>
+<script src="../copybutton.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js"></script>
+</body>
+</html>
