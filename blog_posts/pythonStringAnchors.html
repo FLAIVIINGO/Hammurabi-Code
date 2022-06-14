@@ -76,9 +76,9 @@
                         <div class="code-wrapper">
                             <pre>
                                 <code id="code">
->>> import re
->>> words = ['university', 'the\nuniversity', 'unicycle', 'clown\nunit']
->>> [e for e in words if re.search(r'\Auni', e)]
+&gt;&gt;&gt; import re
+&gt;&gt;&gt; words = ['university', 'the\nuniversity', 'unicycle', 'clown\nunit']
+&gt;&gt;&gt; [e for e in words if re.search(r'\Auni', e)]
 ['university', 'unicycle']
                                 </code>
                                 <span id="copy-success">Code copied</span>
@@ -90,20 +90,43 @@
                        The next string anchor will do the opposite of the previous. This string anchor will find the sequence matching at the end of the string. This sequence is \Z but, we place the text patter we are searching for to the left of \Z. 
                    </p>
                    <div class="code-container">
-                    <p class="language" id="language-copy">Python</p>
-                    <div class="code-wrapper">
-                        <pre>
-                            <code id="code">
->>> import re
->>> words = ['university', 'the\nuniversity', 'unicycle', 'clown\nunit']
->>> [e for e in words if re.search(r'uni\Z', e)]
+                        <p class="language" id="language-copy">Python</p>
+                        <div class="code-wrapper">
+                            <pre>
+                                <code id="code">
+&gt;&gt;&gt; import re
+&gt;&gt;&gt; words = ['university', 'the\nuniversity', 'unicycle', 'clown\nunit']
+&gt;&gt;&gt; [e for e in words if re.search(r'uni\Z', e)]
 ['university', 'the\nuniversity']
-                            </code>
-                            <span id="copy-success">Code copied</span>
-                        </pre>
-                        <button id="copy-button">Copy</button>
+                               </code>
+                               <span id="copy-success">Code copied</span>
+                           </pre>
+                           <button id="copy-button">Copy</button>
+                       </div>
+                   </div>
+                   <p>
+                    Lastly, we can take a look at using search as a conditional statement. Since Python evaluates None as False in a boolean context, re.search can be used as a conditional expression.
+                   </p>
+                   <div class="code-container">
+                        <p class="language" id="language-copy">Python</p>
+                        <div class="code-wrapper">
+                            <pre>
+                                <code id="code">
+&gt;&gt;&gt; import re
+&gt;&gt;&gt; str = 'This is a string'
+&gt;&gt;&gt; if re.search(r'his', str):
+        print('found')
+&gt;&gt;&gt; if not re.search(r'zed', str):
+        print('did not find')
+                                </code>
+                                <span id="copy-success">Code copied</span>
+                            </pre>
+                            <button id="copy-button">Copy</button>
+                        </div>
                     </div>
-                </div>
+                    <p>
+                        In conclusion, the benefit of using re.search will be useful when we take a look at scraping websites or verifying emails.
+                    </p>
                 </div>
                 
             </article>
