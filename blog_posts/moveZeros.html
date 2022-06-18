@@ -63,7 +63,7 @@
                 <!-- Content -->
                 <div class="content text-dark display-2 secondary-title mt-3">
                     <p>
-
+                        A common coding interview question on algorithms, in this post we will explore how to move a specific value to the end of an array in place. Let's say that we have an array of size n, which has a mixture of positive integers and zeros. The problem is that we must place the zeros at the end of the array while keeping the order of positive integers intact. The first approach to this problem would be to create another array to store any value that isn't zero, and to then pad the end of the array with zeros. Then you would copy the contents of that array to the original array. The problem here is that we are using up O(n) space with our extra array. Also our time complexity increases as we need to iterate through the entire array and then we need to iterate through our result array with however many zeros were left. We can do much better by taking a different approach. Instead of using two arrays, we can use two pointers. The first pointer will just be used for the array iteration, i. But, our second pointer will be called searchIdx. This pointer will be used to store a value that is not equal to zero at the searchIdx position. The searchIdx will only increment when it has found a non-zero number. This allows us to edit this array in place. Once we have iterated through the entire array we can set up a second for loop starting at the searchIdx's position and pad the rest of the array with zeros. Our time complexity remains almost identical but we now have limited our space complexity from O(n) to O(1).
                     </p>
                     
                     
