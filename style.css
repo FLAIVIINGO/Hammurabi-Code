@@ -28,6 +28,10 @@ a {
     box-sizing: border-box;
 }
 
+ul {
+    flex-direction: row;
+}
+
 
 /* global styling */
 
@@ -205,6 +209,11 @@ a {
     padding: 10px;
 }
 
+.navbar ul {
+    display: flex;
+    flex-direction: row;
+}
+
 .navbar-nav {
     padding: 0;
 }
@@ -222,7 +231,7 @@ a {
 
 .nav-link {
     font-size: 18px;
-    margin: 12px;
+    margin: 0px 12px;
     color: hsl(var(--clr-light));
     font-family: "Poppins", sans-serif;
 }
@@ -405,7 +414,7 @@ a {
     position: absolute;
     bottom: 12px;
     left: 50%;
-    translate: translateX(-50%);
+    transform: translateX(-50%);
     background-color: hsl(var(--primary-clr));
     color: white;
     padding: 16px 32px;
